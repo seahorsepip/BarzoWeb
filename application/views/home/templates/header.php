@@ -27,18 +27,11 @@
                 <ul class="sidebar-nav">
                     <li class="sidebar-brand">
                     </li>
-                    <li class="active">
-                        <a class="menu-item" href="#">Home</a>
-                    </li>
-                    <li>
-                        <a class="menu-item" href="pages/pubs.html">Pubs/Bars</a>
-                    </li>
-                    <li>
-                        <a class="menu-item" href="pages/quiz.html">Quiz</a>
-                    </li>
-                    <li>
-                        <a class="menu-item" href="pages/contact.html">Contact</a>
-                    </li>
+                    <?php foreach ($menu as $key => $menu_item):?>
+                        <li>
+                            <a class="menu-item" href="<?php echo base_url() . $key;?>"><?php echo $menu_item; ?></a>
+                        </li>
+                    <?php endforeach;?>
                     <li class="menu-footer">
                         <p>© 2016 BarZo.<p>
                     </li>

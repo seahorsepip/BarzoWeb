@@ -50,3 +50,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'home/index';
+
+//Temp routes
+$route['home/(:any)'] = 'home/index';
+$route['pubs/(:any)'] = 'pubs/index';
+$route['quiz/(:any)'] = 'quiz/index';
+$route['contact/(:any)'] = 'contact/index';
