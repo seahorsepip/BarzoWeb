@@ -14,15 +14,16 @@ class Pubs extends CI_Controller {
             show_404();
         }
 
-        $data['title'] = ucfirst($page); // Capitalize the first letter
         $data['controller_origin'] = "pubs";
 
-        $data['menu'] = array(
-            'home' => 'Home',
-            'pubs' => 'Pubs/Bars',
-            'quiz' => 'Quiz',
-            'contact' => 'Contact'
-        );
+        //Initialize & pass custom menu class
+        $this->load->library('MenuLib');
+        $data['menu'] = $this->menulib->getMenuAsArray();
+
+        $this->load->model('Pubs_model');
+        $data['pubs'] = $this->Pubs_model->getAllPubs();
+
+
 
         $this->load->view('templates/header', $data);
         $this->load->view('pubs/index', $data);
