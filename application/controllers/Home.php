@@ -15,7 +15,7 @@ class Home extends CI_Controller {
         }
 
         $data['title'] = ucfirst($page); // Capitalize the first letter
-        $data['segment'] = "home/";
+        $data['controller_origin'] = "home";
 
         $data['menu'] = array(
             'home' => 'Home',
@@ -24,8 +24,8 @@ class Home extends CI_Controller {
             'contact' => 'Contact'
         );
 
-        $this->load->view('home/templates/header', $data);
+        $this->load->view('templates/header', $data);
         $this->load->view('home/index', $data);
-        $this->load->view('home/templates/footer');
+        $this->load->view('templates/footer');
     }
 }

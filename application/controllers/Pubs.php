@@ -15,7 +15,7 @@ class Pubs extends CI_Controller {
         }
 
         $data['title'] = ucfirst($page); // Capitalize the first letter
-        $data['segment'] = "pubs/";
+        $data['controller_origin'] = "pubs";
 
         $data['menu'] = array(
             'home' => 'Home',
@@ -24,6 +24,8 @@ class Pubs extends CI_Controller {
             'contact' => 'Contact'
         );
 
+        $this->load->view('templates/header', $data);
         $this->load->view('pubs/index', $data);
+        $this->load->view('templates/footer');
     }
 }

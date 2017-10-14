@@ -28,9 +28,15 @@
                     <li class="sidebar-brand">
                     </li>
                     <?php foreach ($menu as $key => $menu_item):?>
-                        <li>
-                            <a class="menu-item" href="<?php echo base_url() . $key;?>"><?php echo $menu_item; ?></a>
-                        </li>
+                        <?php if ($key === $controller_origin) : ?>
+                            <li class="active">
+                                <a class="menu-item" href="<?php echo base_url() . $key;?>"><?php echo $menu_item; ?></a>
+                            </li>
+                        <?php else : ?>
+                            <li>
+                                <a class="menu-item" href="<?php echo base_url() . $key;?>"><?php echo $menu_item; ?></a>
+                            </li>
+                        <?php endif; ?>
                     <?php endforeach;?>
                     <li class="menu-footer">
                         <p>© 2016 BarZo.<p>
