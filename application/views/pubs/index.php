@@ -23,17 +23,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <div class="row">
                                         <!-- Title -->
                                         <div class="col-md-12" style="padding-top: 10px">
-                                            <h2><?php echo $pub[0]; ?></h2>
+                                            <h2><?php echo $pub[1]; ?></h2>
                                         </div>
                                         <!-- Description -->
                                         <div class="col-md-12">
-                                            <?php echo $pub[1]; ?>
+                                            <?php echo $pub[2]; ?>
                                         </div>
                                         <!-- Address data -->
                                         <div class="col-md-12" style="padding-top: 50px;">
-                                            <h6 style="margin: 0;"><?php echo $pub[2]; ?></h6>
                                             <h6 style="margin: 0;"><?php echo $pub[3]; ?></h6>
                                             <h6 style="margin: 0;"><?php echo $pub[4]; ?></h6>
+                                            <h6 style="margin: 0;"><?php echo $pub[5]; ?></h6>
                                         </div>
                                     </div>
                                 </div>

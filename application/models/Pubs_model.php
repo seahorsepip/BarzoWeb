@@ -13,6 +13,7 @@ class Pubs_model extends CI_Model {
         //Kan netter i guess, met een aparte class. Alhoewel CI daar n beetje gay mee doet.
         return array(
             array(
+                0,
                 'Millertime Eindhoven',
                 'Het gezelligste café op \'t stratumseind!',
                 'Stratumseind 51',
@@ -20,6 +21,7 @@ class Pubs_model extends CI_Model {
                 'Eindhoven'
             ),
             array(
+                1,
                 'Karaokebar Ameezing Eindhoven',
                 'De beste en enigste karaokebar in Eindhoven!',
                 'Stratumseind 62',
@@ -27,6 +29,7 @@ class Pubs_model extends CI_Model {
                 'Eindhoven'
             ),
             array(
+                2,
                 'Feestfabriek Eindhoven',
                 'Shots! Shots! Shots!',
                 'Stratumseind 56',
@@ -34,6 +37,7 @@ class Pubs_model extends CI_Model {
                 'Eindhoven'
             ),
             array(
+                3,
                 'Schrik Millertime Breda',
                 'Breda! Breda! Breda!',
                 'Visserstraat 12',
@@ -41,13 +45,14 @@ class Pubs_model extends CI_Model {
                 'Breda'
             ),
             array(
+                4,
                 'Karaokebar Ameezing',
                 'Liedjes Zinguh! Liedjes Zinguh!',
                 'Visserstraat 9',
                 '4811 WH',
                 'Breda'
             ),
-            array(
+            array(5,
                 'De Feestfabriek',
                 'PUBBBBBBBBBBBBBBBBB!',
                 'Visserstraat 7',
@@ -55,5 +60,9 @@ class Pubs_model extends CI_Model {
                 'Breda'
             )
         );
+    }
+
+    public function getPubById($id){
+
     }
 }
