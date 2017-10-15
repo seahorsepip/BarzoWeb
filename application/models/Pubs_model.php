@@ -61,8 +61,35 @@ class Pubs_model extends CI_Model {
             )
         );
     }
-
+    //TODO: Fix so that this shit gets pulled from API
     public function getPubById($id){
-
+        //Assume ID == 5 for testing purposes
+        if ((int)$id === 4){
+            return array(
+                4,
+                'Karaokebar Ameezing',
+                'Liedjes Zinguh! Liedjes Zinguh!',
+                'Visserstraat 9',
+                '4811 WH',
+                'Breda'
+            );
+        }else if ((int)$id === 5){
+            return array(5,
+                'De Feestfabriek',
+                'PUBBBBBBBBBBBBBBBBB!',
+                'Visserstraat 7',
+                '4811 WH',
+                'Breda'
+            );
+        }else{
+            return array(
+                0,
+                'Millertime Eindhoven',
+                'Het gezelligste café op \'t stratumseind!',
+                'Stratumseind 51',
+                '5611 EP',
+                'Eindhoven'
+            );
+        }
     }
 }
