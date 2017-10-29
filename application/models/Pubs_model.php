@@ -38,7 +38,7 @@ class Pubs_model extends CI_Model {
             return json_decode($response, true);
         }
     }
-    
+
     public function getPubById($id){
         //TODO: API implementation
         $json = '{

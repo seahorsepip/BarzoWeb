@@ -11,6 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="col-md-10 col-md-offset-1" style="background-color: #ffffff; border-radius: 10px;">
                 <div class="row">
                     <div class="col-md-4" style="padding: 10px;">
+                        <!-- TODO: Fix aspect ratio in images -->
                         <?php if(isset($pub['photos']['profile_image'])) : ?>
                             <img src="<?php echo $pub['photos']['profile_image']; ?>" style="float:left; border-radius: 10px; height: 400px; width: 400px;"/>
                         <?php else : ?>
