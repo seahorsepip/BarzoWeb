@@ -7,59 +7,36 @@ class Pubs_model extends CI_Model {
     }
 
     public function getAllPubs() {
-        //TODO: Code so this data gets pulled from the API
 
-        //Name, Description, Street, Zipcode, City
-        //Kan netter i guess, met een aparte class. Alhoewel CI daar n beetje gay mee doet.
-        return array(
-            array(
-                0,
-                'Millertime Eindhoven',
-                'Het gezelligste café op \'t stratumseind!',
-                'Stratumseind 51',
-                '5611 EP',
-                'Eindhoven'
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_PORT => "3000",
+            CURLOPT_URL => "http://localhost:3000/api/bars",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+                "cache-control: no-cache",
+                "postman-token: 91c3da4c-7c5a-258f-2c16-bb8bcd836129"
             ),
-            array(
-                1,
-                'Karaokebar Ameezing Eindhoven',
-                'De beste en enigste karaokebar in Eindhoven!',
-                'Stratumseind 62',
-                '5611 EP',
-                'Eindhoven'
-            ),
-            array(
-                2,
-                'Feestfabriek Eindhoven',
-                'Shots! Shots! Shots!',
-                'Stratumseind 56',
-                '5611 EP',
-                'Eindhoven'
-            ),
-            array(
-                3,
-                'Schrik Millertime Breda',
-                'Breda! Breda! Breda!',
-                'Visserstraat 12',
-                '4811 WJ',
-                'Breda'
-            ),
-            array(
-                4,
-                'Karaokebar Ameezing',
-                'Liedjes Zinguh! Liedjes Zinguh!',
-                'Visserstraat 9',
-                '4811 WH',
-                'Breda'
-            ),
-            array(5,
-                'De Feestfabriek',
-                'PUBBBBBBBBBBBBBBBBB!',
-                'Visserstraat 7',
-                '4811 WH',
-                'Breda'
-            )
-        );
+        ));
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        if ($err) {
+            //TODO: Handle error
+            //echo "cURL Error #:" . $err;
+        } else {
+            //http://docs.php.net/json_decode
+            return json_decode($response, true);
+        }
     }
     //TODO: Fix so that this shit gets pulled from API
     public function getPubById($id){

@@ -9,10 +9,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <div class="row mainDiv">
             <div class="col-md-10 col-md-offset-1">
-
                 <?php foreach ($pubs as $pub_key => $pub): ?>
                         <!-- TODO: Fix classes and styles here! -->
-                        <a href="<?php echo base_url() . "pubs/pub/" . $pub[0]; ?>">
+                        <a href="<?php echo base_url() . "pubs/pub/" . $pub['id']; ?>">
                             <!--Whole row -->
                             <div class="row" style="background-color: #FCFCFC; cursor: pointer; margin-bottom: 20px; border-radius: 10px; color: #080808;">
                                 <!-- Main image -->
@@ -23,17 +22,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <div class="row">
                                         <!-- Title -->
                                         <div class="col-md-12" style="padding-top: 10px">
-                                            <h2><?php echo $pub[1]; ?></h2>
+                                            <h2><?php echo $pub['name']; ?></h2>
                                         </div>
                                         <!-- Description -->
                                         <div class="col-md-12">
-                                            <?php echo $pub[2]; ?>
+                                            <?php echo $pub['description']; ?>
                                         </div>
                                         <!-- Address data -->
                                         <div class="col-md-12" style="padding-top: 50px;">
-                                            <h6 style="margin: 0;"><?php echo $pub[3]; ?></h6>
-                                            <h6 style="margin: 0;"><?php echo $pub[4]; ?></h6>
-                                            <h6 style="margin: 0;"><?php echo $pub[5]; ?></h6>
+                                            <h6 style="margin: 0;"><?php echo $pub['location']; ?></h6>
+
                                         </div>
                                     </div>
                                 </div>

@@ -21,6 +21,7 @@ class Pubs extends CI_Controller {
         $data['menu'] = $this->menulib->getMenuAsArray();
 
         $this->load->model('Pubs_model');
+        //TODO: It doesn't like this, fix array maybe?
         $data['pubs'] = $this->Pubs_model->getAllPubs();
 
 
