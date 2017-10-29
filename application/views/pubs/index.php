@@ -21,7 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <?php if(isset($pub['photos']['profile_image'])) : ?>
                                         <img src="<?php echo $pub['photos']['profile_image']; ?>" style="float:left; border-radius: 10px;" width="150" height="150"/>
                                     <?php else : ?>
-                                        <img src="http://via.placeholder.com/500x500" style="float:left; border-radius: 10px;" width="150" height="150"/>
+                                        <img src="https://res.cloudinary.com/ixbitz/image/upload/v1509307035/placeholder400x400_jwk0g9.png" style="float:left; border-radius: 10px;" width="150" height="150"/>
                                     <?php endif; ?>
                                 </div>
                                 <div class="col-md-8">

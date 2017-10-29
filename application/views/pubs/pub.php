@@ -9,13 +9,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <div class="row mainDiv">
             <div class="col-md-10 col-md-offset-1" style="background-color: #ffffff; border-radius: 10px;">
-                <pre><?php print_r($pub); ?></pre>
                 <div class="row">
                     <div class="col-md-4" style="padding: 10px;">
                         <?php if(isset($pub['photos']['profile_image'])) : ?>
                             <img src="<?php echo $pub['photos']['profile_image']; ?>" style="float:left; border-radius: 10px; height: 400px; width: 400px;"/>
                         <?php else : ?>
-                            <img src="http://via.placeholder.com/400x400" style="float:left; border-radius: 10px; height: 400px; width: 400px;"/>
+                            <img src="https://res.cloudinary.com/ixbitz/image/upload/v1509307035/placeholder400x400_jwk0g9.png" style="float:left; border-radius: 10px; height: 400px; width: 400px;"/>
                         <?php endif; ?>
                     </div>
                     <div class="col-md-8">
@@ -35,6 +34,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
                         </div>
                     </div>
+                </div>
+                <hr/>
+                <div class="row">
+                    <h3 style="margin-left: 10px;">Impressions</h3>
+                    <!-- All images -->
+                    <?php if(isset($pub['photos']['images'])) : ?>
+                        <?php foreach ($pub['photos']['images'] as $image) : ?>
+                            <a href="<?php echo $image; ?>"><img src="<?php echo $image; ?>" style="float:left; border-radius: 10px; margin:10px;" width="150" height="150"/></a>
+                        <?php endforeach; ?>
+                    <?php else : ?>
+                        <a href="https://res.cloudinary.com/ixbitz/image/upload/v1509307035/placeholder400x400_jwk0g9.png"><img src="https://res.cloudinary.com/ixbitz/image/upload/v1509307035/placeholder400x400_jwk0g9.png" style="float:left; border-radius: 10px; margin:10px;" width="150" height="150"/></a>
+                    <?php endif; ?>
                 </div>
 
             </div>
