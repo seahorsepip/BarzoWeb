@@ -20,17 +20,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="col-md-8">
                         <div class="row">
                             <div class="col-md-12" style="padding-top: 30px;">
-                                <h1><?php echo $pub[1]; ?></h1>
+                                <h1><?php echo $pub['name']; ?></h1>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12" style="padding-top: 10px;">
-                                <h4><?php echo $pub[2]; ?></h4>
+                                <h4><?php echo $pub['description']; ?></h4>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12" style="padding-top: 50px;">
-                                <?php echo nl2br($pub[3] . "\n" . $pub[4] . " " . $pub[5]); ?>
+                                <?php echo $pub['location']; ?>
                             </div>
                         </div>
                     </div>
