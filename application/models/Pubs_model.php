@@ -7,8 +7,6 @@ class Pubs_model extends CI_Model {
     }
 
     public function getAllPubs() {
-        //TODO: Handle OAUTH
-
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -40,7 +38,7 @@ class Pubs_model extends CI_Model {
             return json_decode($response, true);
         }
     }
-    //TODO: Fix so that this shit gets pulled from API
+    
     public function getPubById($id){
         //TODO: API implementation
         $json = '{
