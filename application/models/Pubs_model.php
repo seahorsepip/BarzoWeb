@@ -7,10 +7,12 @@ class Pubs_model extends CI_Model {
     }
 
     public function getAllPubs() {
+        //TODO: Handle OAUTH
 
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
+            //TODO: Change when in production to production values
             CURLOPT_PORT => "3000",
             CURLOPT_URL => "http://localhost:3000/api/bars",
             CURLOPT_RETURNTRANSFER => true,

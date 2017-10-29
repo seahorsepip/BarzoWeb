@@ -9,6 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <div class="row mainDiv">
             <div class="col-md-10 col-md-offset-1">
+                <pre><?php print_r($pubs); ?></pre>
                 <?php foreach ($pubs as $pub_key => $pub): ?>
                         <!-- TODO: Fix classes and styles here! -->
                         <a href="<?php echo base_url() . "pubs/pub/" . $pub['id']; ?>">
@@ -16,7 +17,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div class="row" style="background-color: #FCFCFC; cursor: pointer; margin-bottom: 20px; border-radius: 10px; color: #080808;">
                                 <!-- Main image -->
                                 <div class="col-md-2" style="padding: 10px;">
-                                    <img src="http://via.placeholder.com/250x250" style="float:left; border-radius: 10px;" width="150" height="150"/>
+                                    <!-- TODO: Fix default image for bars that don't have pictures -->
+                                    <?php if(isset($pub['photos']['profile_image'])) : ?>
+                                        <img src="<?php echo $pub['photos']['profile_image']; ?>" style="float:left; border-radius: 10px;" width="150" height="150"/>
+                                    <?php else : ?>
+                                        <img src="http://via.placeholder.com/500x500" style="float:left; border-radius: 10px;" width="150" height="150"/>
+                                    <?php endif; ?>
                                 </div>
                                 <div class="col-md-8">
                                     <div class="row">
