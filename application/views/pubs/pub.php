@@ -13,9 +13,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="col-md-4" style="padding: 10px;">
                         <!-- TODO: Fix aspect ratio in images -->
                         <?php if(isset($pub['photos']['profile_image'])) : ?>
-                            <img src="<?php echo $pub['photos']['profile_image']; ?>" style="float:left; border-radius: 10px; height: 400px; width: 400px;"/>
+                            <img src="<?php echo $pub['photos']['profile_image']; ?>" style="float:left; border-radius: 10px;" width="400"/>
                         <?php else : ?>
-                            <img src="https://res.cloudinary.com/ixbitz/image/upload/v1509307035/placeholder400x400_jwk0g9.png" style="float:left; border-radius: 10px; height: 400px; width: 400px;"/>
+                            <img src="https://res.cloudinary.com/ixbitz/image/upload/v1509307035/placeholder400x400_jwk0g9.png" style="float:left; border-radius: 10px;" width="400"/>
                         <?php endif; ?>
                     </div>
                     <div class="col-md-8">
@@ -42,10 +42,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <!-- All images -->
                     <?php if(isset($pub['photos']['images'])) : ?>
                         <?php foreach ($pub['photos']['images'] as $image) : ?>
-                            <a href="<?php echo $image; ?>"><img src="<?php echo $image; ?>" style="float:left; border-radius: 10px; margin:10px;" width="150" height="150"/></a>
+                            <a href="<?php echo $image; ?>" target="_blank"><img src="<?php echo $image; ?>" style="float:left; border-radius: 10px; margin:10px;" height="150"/></a>
                         <?php endforeach; ?>
                     <?php else : ?>
-                        <a href="https://res.cloudinary.com/ixbitz/image/upload/v1509307035/placeholder400x400_jwk0g9.png"><img src="https://res.cloudinary.com/ixbitz/image/upload/v1509307035/placeholder400x400_jwk0g9.png" style="float:left; border-radius: 10px; margin:10px;" width="150" height="150"/></a>
+                        <a href="https://res.cloudinary.com/ixbitz/image/upload/v1509307035/placeholder400x400_jwk0g9.png"><img src="https://res.cloudinary.com/ixbitz/image/upload/v1509307035/placeholder400x400_jwk0g9.png" style="float:left; border-radius: 10px; margin:10px;" height="150"/></a>
                     <?php endif; ?>
                 </div>
 

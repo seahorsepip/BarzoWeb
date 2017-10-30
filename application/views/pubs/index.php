@@ -17,11 +17,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div class="row" style="background-color: #FCFCFC; cursor: pointer; margin-bottom: 20px; border-radius: 10px; color: #080808;">
                                 <!-- Main image -->
                                 <div class="col-md-2" style="padding: 10px;">
-                                    <!-- TODO: Fix default image for bars that don't have pictures -->
                                     <?php if(isset($pub['photos']['profile_image'])) : ?>
-                                        <img src="<?php echo $pub['photos']['profile_image']; ?>" style="float:left; border-radius: 10px;" width="150" height="150"/>
+                                        <img src="<?php echo $pub['photos']['profile_image']; ?>" style="float:left; border-radius: 10px;" height="150"/>
                                     <?php else : ?>
-                                        <img src="https://res.cloudinary.com/ixbitz/image/upload/v1509307035/placeholder400x400_jwk0g9.png" style="float:left; border-radius: 10px;" width="150" height="150"/>
+                                        <img src="https://res.cloudinary.com/ixbitz/image/upload/v1509307035/placeholder400x400_jwk0g9.png" style="float:left; border-radius: 10px;" height="150"/>
                                     <?php endif; ?>
                                 </div>
                                 <div class="col-md-8">
