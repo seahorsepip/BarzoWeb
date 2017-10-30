@@ -14,10 +14,15 @@ class Home extends CI_Controller {
             show_404();
         }
 
-        $data['title'] = ucfirst($page); // Capitalize the first letter
+        //Initialize custom menu class
+        $this->load->library('MenuLib');
 
-        $this->load->view('home/templates/header', $data);
+        $data['controller_origin'] = "home";
+
+        $data['menu'] = $this->menulib->getMenuAsArray();
+
+        $this->load->view('templates/header', $data);
         $this->load->view('home/index', $data);
-        $this->load->view('home/templates/footer', $data);
+        $this->load->view('templates/footer');
     }
 }
