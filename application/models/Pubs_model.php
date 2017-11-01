@@ -40,23 +40,33 @@ class Pubs_model extends CI_Model {
     }
 
     public function getPubById($id){
-        //TODO: API implementation
-        $json = '{
-            "id": "529a096c-57fb-416c-859b-be39aa862472",
-            "name": "Feestfabriek Eindhoven",
-            "description": "Shots! Shots! Shots!",
-            "photos": {
-              "profile_image": "https:\/\/res.cloudinary.com\/ixbitz\/image\/upload\/v1509291345\/436ab343a8ea01c7ea0b2c8dbee1bded_y2cntq.jpg",
-              "images": [
-                "https:\/\/res.cloudinary.com\/ixbitz\/image\/upload\/v1509291345\/436ab343a8ea01c7ea0b2c8dbee1bded_y2cntq.jpg",
-                "http:\/\/res.cloudinary.com\/ixbitz\/image\/upload\/v1509290844\/sample.jpg"
-              ]
-            },
-            "location": "Stratumseind 56 5611EP Eindhoven",
-            "createdAt": "2017-10-29T13:22:53.823Z",
-            "updatedAt": "2017-10-29T13:22:56.237Z"
-          }';
+        $curl = curl_init();
 
-        return json_decode($json, true);
+        curl_setopt_array($curl, array(
+            CURLOPT_PORT => "3000",
+            CURLOPT_URL => "http://localhost:3000/api/bars/" . $id,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+                "cache-control: no-cache",
+                "postman-token: a0764d30-3065-9d64-3030-6b5e386eb0aa"
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        if ($err) {
+            //TODO: Handle error
+            //echo "cURL Error #:" . $err;
+        } else {
+            return json_decode($response, true);
+        }
     }
 }
