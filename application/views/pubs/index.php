@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="col-md-10 col-md-offset-1">
                 <?php foreach ($pubs as $pub_key => $pub): ?>
                         <!-- TODO: Fix classes and styles here! -->
-                        <a href="<?php "/pubs/" . $pub['id']; ?>">
+                        <a href="<?php echo base_url() . "pubs/" . $pub['id']; ?>">
                             <!--Whole row -->
                             <div class="row" style="background-color: #FCFCFC; cursor: pointer; margin-bottom: 20px; border-radius: 10px; color: #080808;">
                                 <!-- Main image -->
