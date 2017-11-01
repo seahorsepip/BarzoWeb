@@ -2345,6 +2345,18 @@ h1 .label, h2 .label, h3 .label, h4 .label, h5 .label, h6 .label, p .label {
 	padding: 15px;
 }
 
-.padding-20{
-	padding: 20px;
+.padding-20 {
+  padding: 20px;
+}
+
+.loginForm {
+  max-width: 900px;
+}
+
+.loginForm h1 {
+  color: white;
+}
+
+.loginForm label {
+  color: lightgrey;
 }
