@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div id="page-content-wrapper" class="header">
     <div class="main container">
         <div class="row loginForm">
-            <div class="col-md-6 col-md-offset-3"><h1 class="display-4 m-b-2">Login</h1>
+            <div class="col-md-6 col-md-offset-3"><h1>Login</h1>
                 <?php
                 if (isset($warning)) {
                     echo "<div class='alert alert-warning'>";

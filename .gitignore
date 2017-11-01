@@ -33,3 +33,6 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 
 # CodeIgniter stuff
 system/
+
+#sonarqube
+sonar-project.properties

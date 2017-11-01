@@ -23,13 +23,14 @@ class Pubs extends CI_Controller {
         $this->load->model('Pubs_model');
         $data['pubs'] = $this->Pubs_model->getAllPubs();
 
+        //$token = getToken();
+        //$header = "authorization: Bearer " . $token;
 
         $this->load->view('templates/header', $data);
         $this->load->view('pubs/index', $data);
         $this->load->view('templates/footer');
     }
 
-    //TODO: Needs polishing! Using proper CI techniques
     public function pub($id){
         $data['controller_origin'] = "pubs";
 

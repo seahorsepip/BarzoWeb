@@ -16,7 +16,7 @@ function getToken()
     $CI = & get_instance();
     $CI->load->library('session');
 
-    if (!($CI->session->userdata('refresh_before'))) return 'what';
+    if (!($CI->session->userdata('refresh_before'))) return false;
 
     if ($CI->session->userdata('refresh_before') < time()) {
         return getRefreshedToken($CI->session->userdata('refresh_token'));
