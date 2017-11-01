@@ -24,7 +24,6 @@ class Pubs extends CI_Controller {
         $data['pubs'] = $this->Pubs_model->getAllPubs();
 
 
-
         $this->load->view('templates/header', $data);
         $this->load->view('pubs/index', $data);
         $this->load->view('templates/footer');
