@@ -8,6 +8,7 @@
             <link href="<?php echo base_url(); ?>css/bootstrap.min.css" rel="stylesheet">
             <!-- CSS -->
             <link href="<?php echo base_url(); ?>css/style.css" rel="stylesheet">
+            <link href="<?php echo base_url(); ?>css/padmarstyles.css" rel="stylesheet">
             <!-- Fonts -->
             <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,400italic,600,700' rel='stylesheet' type='text/css'>
             <link href="<?php echo base_url(); ?>css/font-awesome.min.css" rel="stylesheet" type="text/css">
