@@ -46,4 +46,26 @@ class Pubs extends CI_Controller {
         $this->load->view('pubs/pub', $data);
         $this->load->view('templates/footer');
     }
+
+    public function create($page = 'create'){
+        if (!file_exists(APPPATH . 'views/pubs/' . $page . '.php')) {
+            // Whoops, we don't have a page for that!
+            show_404();
+        }
+        $data['controller_origin'] = "pubs";
+
+        if (getToken() != null && !empty(getToken())){
+            //Logged in, show create view
+            $this->load->library('MenuLib');
+            $data['menu'] = $this->menulib->getMenuAsArray();
+
+            $this->load->view('templates/header', $data);
+            $this->load->view('pubs/create', $data);
+            $this->load->view('templates/footer');
+        }else{
+            //Not logged in, redirect to login page
+            redirect('/login');
+        }
+
+    }
 }

@@ -9,7 +9,9 @@ class MenuLib {
             'home' => 'Home',
             'pubs' => 'Pubs/Bars',
             'quiz' => 'Quiz',
-            'contact' => 'Contact'
+            'contact' => 'Contact',
+            'login' => 'Log in',
+            'logout' => 'Log Out'
         );
     }
 }

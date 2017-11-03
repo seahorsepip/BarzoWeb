@@ -31,9 +31,9 @@ function clearToken()
 
     $CI->session->unset_userdata('access_token');
     $CI->session->unset_userdata('refresh_token');
-    $CI->session->unset_userdate('refresh_before');
-    $CI->session->unset_userdate('scope');
-    $CI->session->unset_userdate('token_type');
+    $CI->session->unset_userdata('refresh_before');
+    $CI->session->unset_userdata('scope');
+    $CI->session->unset_userdata('token_type');
 }
 
 function getRefreshedToken($refreshToken) {
