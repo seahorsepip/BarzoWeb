@@ -66,8 +66,6 @@ class Login extends CI_Controller
         } else {
             return $this->handleResponse($response);
         }
-
-        return 'why the fuck did it get here';
     }
 
     private function getHeaders()
