@@ -8,6 +8,7 @@ class MenuLib {
         return array(
             'home' => 'Home',
             'pubs' => 'Pubs/Bars',
+            'pubs/create' => 'Create Bar',
             'quiz' => 'Quiz',
             'contact' => 'Contact',
             'login' => 'Log in',

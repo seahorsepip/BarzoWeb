@@ -2,9 +2,9 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 ?>
-
 <!-- content -->
 <div id="page-content-wrapper" class="header">
+    <pre><?php print_r($woow); ?></pre>
     <div class="container-fluid">
 
         <div class="row mainDiv">
@@ -17,11 +17,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 }
                 if (isset($error)) {
                     echo "<div class='alert alert-danger'>";
-                    echo $error;
+                    //echo $error;
+                    echo "<pre>" . print_r($error) . "</pre>";
                     echo "</div>";
                 }
                 ?>
-                <?php echo form_open('pubs/create'); ?>
+                <?php echo form_open_multipart('pubs/create'); ?>
                     <div class="form-group">
                         <label for="bar_name">Bar Name:</label>
                         <input class="form-control" id="bar_name" type="text" name="bar_name" value="">
@@ -35,7 +36,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <input class="form-control" id="bar_address" type="text" name="bar_address" value="">
                     </div>
                     <div class="form-group"
-                        <!-- TODO: Maybe do the create page in Dutch? Dunno. -->
                         <label for="bar_zipcode">Zipcode:</label>
                         <input class="form-control" id="bar_zipcode" type="text" name="bar_zipcode" value="">
                     </div>

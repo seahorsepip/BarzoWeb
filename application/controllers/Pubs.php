@@ -62,15 +62,26 @@ class Pubs extends CI_Controller {
             //Logged in, show create view
             $this->load->library('MenuLib');
             $data['menu'] = $this->menulib->getMenuAsArray();
-            $data['controller_origin'] = "pubs";
+            $data['controller_origin'] = "pubs/create";
 
             if ($this->input->method(TRUE) == 'POST' && isset($_REQUEST)) {
-                //TODO: Dit kan sws beter, even checken hoe en wat
-                if (empty($this->input->post('bar_name')) || empty($this->input->post('bar_description')) || empty($this->input->post('bar_address')) || empty($this->input->post('bar_zipcode')) || empty($this->input->post('bar_city'))) {
+
+                $array = array(
+                    "profile_image" => $this->uploadProfileImage($_FILES['bar_profileimage'])['data']['img_url'],
+                    "images" => array()
+                );
+                $data['woow'] = json_encode($array, JSON_UNESCAPED_SLASHES);
+
+                //$data['error'] = $this->handleCreate();
+                //redirect(base_url() . 'pubs');
+
+
+
+                /*if (empty($this->input->post('bar_name')) || empty($this->input->post('bar_description')) || empty($this->input->post('bar_address')) || empty($this->input->post('bar_zipcode')) || empty($this->input->post('bar_city'))) {
                     $data['warning'] = 'Please fill in every field!';
                 } else {
-                    $data['error'] = $this->handleCreate();
-                }
+
+                }*/
             }
 
             $this->load->view('templates/header', $data);
@@ -86,7 +97,7 @@ class Pubs extends CI_Controller {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "http://maatwerk.works/api/bars",
+            CURLOPT_URL => "http://localhost:3000/api/bars",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_CUSTOMREQUEST => "POST",
             CURLOPT_POSTFIELDS => $this->getBody(),
@@ -132,9 +143,38 @@ class Pubs extends CI_Controller {
         $json = json_decode($response, true);
         if ($json != null) {
             if(isset($json['error'])) {
-                return $json['error'];
+                return $json;
             }
             redirect(base_url() . 'pubs');
+        }
+    }
+
+    private function uploadProfileImage($file){
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "http://uploads.im/api",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+        ));
+
+        curl_setopt($curl, CURLOPT_POST, 1);
+        $args['file'] = new CurlFile($file["tmp_name"], $file["type"], $file["name"]);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $args);
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        if ($err) {
+            return "cURL Error #:" . $err;
+        } else {
+            return json_decode($response, TRUE);
         }
     }
 }
