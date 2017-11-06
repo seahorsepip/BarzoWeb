@@ -4,7 +4,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <!-- content -->
 <div id="page-content-wrapper" class="header">
-    <pre><?php print_r($woow); ?></pre>
     <div class="container-fluid">
 
         <div class="row mainDiv">
@@ -49,7 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                     <div class="form-group">
                         <label for="bar_images">Impression images:</label>
-                        <input class="form-control" id="bar_images" type="file" name="bar_images" multiple>
+                        <input class="form-control" id="bar_images" type="file" name="bar_images[]" multiple>
                     </div>
                     <div class="form-group">
                         <button class="btn btn-primary" type="submit">Submit</button>
