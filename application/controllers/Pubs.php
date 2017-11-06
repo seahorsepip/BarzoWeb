@@ -28,7 +28,6 @@ class Pubs extends CI_Controller {
 
         $this->load->model('Pubs_model');
         $data['pubs'] = $this->Pubs_model->getAllPubs();
-
         //$token = getToken();
         //$header = "authorization: Bearer " . $token;
 
@@ -73,8 +72,9 @@ class Pubs extends CI_Controller {
 
                     //Image handling
                     //TODO: Make this more readable with funcs 'n shit
+
                     $array = array(
-                        "profile_image" => isset($_FILES['bar_profileimage']) ? $this->uploadImage($_FILES['bar_profileimage'])['data']['img_url'] : "",
+                        "profile_image" => isset($_FILES['bar_profileimage']) ? $this->uploadCloudImage($_FILES['bar_profileimage'])['url'] : "",
                         "images" => array()
                     );
 
@@ -83,11 +83,12 @@ class Pubs extends CI_Controller {
                         $images = $this->fixFuckingArray($_FILES['bar_images']);
 
                         foreach ($images as $key => $image) {
-                            array_push($array['images'], $this->uploadImage($image)['data']['img_url']);
+                            array_push($array['images'], $this->uploadCloudImage($image)['url']);
                         }
                     }
 
-                    $data['error'] = $this->handleCreate(json_encode($array, JSON_UNESCAPED_SLASHES));
+                    //echo json_encode($array, JSON_UNESCAPED_SLASHES);
+                    $data['error'] = $this->handleCreate($array);
                     redirect(base_url() . 'pubs');
 
                 }
@@ -109,9 +110,10 @@ class Pubs extends CI_Controller {
             CURLOPT_URL => "http://localhost:3000/api/bars",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_CUSTOMREQUEST => "POST",
-            CURLOPT_POSTFIELDS => $this->getBody($photos),
+            CURLOPT_POSTFIELDS => http_build_query($this->getBody($photos)),
             CURLOPT_HTTPHEADER => $this->getHeaders(),
         ));
+
 
         $response = curl_exec($curl);
         $err = curl_error($curl);
@@ -140,11 +142,19 @@ class Pubs extends CI_Controller {
 
     private function getBody($photos)
     {
-        $body = "name=" . $this->input->post('bar_name');
+        /*$body = "name=" . $this->input->post('bar_name');
         $body .= "&description=" . $this->input->post('bar_description');
         $body .= "&location=" . $this->input->post('bar_address') . " " . $this->input->post('bar_zipcode') . " " . $this->input->post('bar_city');
-        $body .= "&photos=" . $photos;
-        $body .= "&scope=" . self::SCOPE;
+        //$body .= "&photos=" . $photos;
+        $body .= "&scope=" . self::SCOPE;*/
+
+        $body = array(
+            'name' => $this->input->post('bar_name'),
+            'description' => $this->input->post('bar_description'),
+            'location' => $this->input->post('bar_address') . " " . $this->input->post('bar_zipcode') . " " . $this->input->post('bar_city'),
+            'photos' => json_encode($photos, JSON_UNESCAPED_SLASHES),
+            'scope' => self::SCOPE
+        );
         return $body;
     }
 
@@ -159,33 +169,19 @@ class Pubs extends CI_Controller {
         }
     }
 
-    private function uploadImage($file){
-        $curl = curl_init();
+    private function uploadCloudImage($file){
+        require_once APPPATH . 'libraries/Cloudinary.php';
+        require_once APPPATH . 'libraries/Uploader.php';
+        require_once APPPATH . 'libraries/Api.php';
 
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => "http://uploads.im/api",
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => "",
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 30,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => "POST",
+        \Cloudinary::config(array(
+            "cloud_name" => "ixbitz",
+            "api_key" => "293537726683591",
+            "api_secret" => "bwzH6FrhaUq2kCHpbbPoxZr0IE8"
         ));
+        $uploaded_file = \Cloudinary\Uploader::upload($file["tmp_name"]);
 
-        curl_setopt($curl, CURLOPT_POST, 1);
-        $args['file'] = new CurlFile($file["tmp_name"], $file["type"], $file["name"]);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $args);
-
-        $response = curl_exec($curl);
-        $err = curl_error($curl);
-
-        curl_close($curl);
-
-        if ($err) {
-            return "cURL Error #:" . $err;
-        } else {
-            return json_decode($response, TRUE);
-        }
+        return $uploaded_file;
     }
 
     private function fixFuckingArray($bar_image){
