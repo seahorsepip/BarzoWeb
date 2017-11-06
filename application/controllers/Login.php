@@ -39,6 +39,11 @@ class Login extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    public function logout(){
+        clearToken();
+        redirect('/login');
+    }
+
     private function handleLogin()
     {
         $curl = curl_init();
@@ -61,8 +66,6 @@ class Login extends CI_Controller
         } else {
             return $this->handleResponse($response);
         }
-
-        return 'why the fuck did it get here';
     }
 
     private function getHeaders()

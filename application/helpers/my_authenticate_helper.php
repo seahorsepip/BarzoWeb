@@ -31,9 +31,9 @@ function clearToken()
 
     $CI->session->unset_userdata('access_token');
     $CI->session->unset_userdata('refresh_token');
-    $CI->session->unset_userdate('refresh_before');
-    $CI->session->unset_userdate('scope');
-    $CI->session->unset_userdate('token_type');
+    $CI->session->unset_userdata('refresh_before');
+    $CI->session->unset_userdata('scope');
+    $CI->session->unset_userdata('token_type');
 }
 
 function getRefreshedToken($refreshToken) {
@@ -47,7 +47,7 @@ function getRefreshedToken($refreshToken) {
         CURLOPT_CUSTOMREQUEST => "POST",
         CURLOPT_POSTFIELDS => "grant_type=refresh_token&refresh_token=" . $refreshToken,
         CURLOPT_HTTPHEADER => array(
-            "authorization: Basic " . base64_encode(Login::CLIENT_ID . ':' . Login::CLIENT_SECRET),
+            "authorization: Basic " . base64_encode('Bar:8e6ebc1f-26db-4c0d-b773-35155cd3fc5f'),
             "content-type: application/x-www-form-urlencoded"
         ),
     ));

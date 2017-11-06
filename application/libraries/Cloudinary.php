@@ -30,12 +30,7 @@ class Cloudinary {
 
     public static $DEFAULT_RESPONSIVE_WIDTH_TRANSFORMATION = array("width"=>"auto", "crop"=>"limit");
 
-    private static $config = array(
-        "cloud_name" => "ixbitz",
-        "api_key" => "293537726683591",
-        "api_secret" => "bwzH6FrhaUq2kCHpbbPoxZr0IE8"
-    );
-
+    private static $config = NULL;
     public static $JS_CONFIG_PARAMS = array("api_key", "cloud_name", "private_cdn", "secure_distribution", "cdn_subdomain");
 
     /**

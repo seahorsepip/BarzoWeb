@@ -55,11 +55,13 @@ $route['default_controller'] = 'home/index';
 //Temp routes
 $route['home/(:any)'] = 'home/index';
 
+$route['pubs/create'] = 'pubs/create';
 $route['pubs/(:any)'] = 'pubs/pub/$1';
 
 $route['quiz/(:any)'] = 'quiz/index';
 
 $route['contact/(:any)'] = 'contact/index';
 
+$route['logout'] = 'login/logout';
 $route['login/(:any)'] = 'login/index';
 $route['login/handleLogin'] = 'login/handleLogin';
