@@ -11,8 +11,8 @@ class Pubs_model extends CI_Model {
 
         curl_setopt_array($curl, array(
             //TODO: Change when in production to production values
-            CURLOPT_PORT => "3000",
-            CURLOPT_URL => "http://localhost:3000/api/bars",
+            CURLOPT_PORT => "80",
+            CURLOPT_URL => "http://maatwerk.works/api/bars",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -43,8 +43,8 @@ class Pubs_model extends CI_Model {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_PORT => "3000",
-            CURLOPT_URL => "http://localhost:3000/api/bars/" . $id,
+            CURLOPT_PORT => "80",
+            CURLOPT_URL => "http://maatwerk.works/api/bars/" . $id,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
