@@ -64,15 +64,13 @@ class Pubs extends CI_Controller {
             $data['controller_origin'] = "pubs/create";
 
             if ($this->input->method(TRUE) == 'POST' && isset($_REQUEST)) {
-                //TODO: Fix that images get uploaded EYO
 
                 if (empty($this->input->post('bar_name')) || empty($this->input->post('bar_description')) || empty($this->input->post('bar_address')) || empty($this->input->post('bar_zipcode')) || empty($this->input->post('bar_city'))) {
                     $data['warning'] = 'Please fill in every field!';
                 } else {
 
                     //Image handling
-                    //TODO: Make this more readable with funcs 'n shit
-
+                    //TODO: Check if images are uploaded
                     $array = array(
                         "profile_image" => isset($_FILES['bar_profileimage']) ? $this->uploadCloudImage($_FILES['bar_profileimage'])['url'] : "",
                         "images" => array()
@@ -170,6 +168,7 @@ class Pubs extends CI_Controller {
     }
 
     private function uploadCloudImage($file){
+        set_time_limit(60);
         require_once APPPATH . 'libraries/Cloudinary.php';
         require_once APPPATH . 'libraries/Uploader.php';
         require_once APPPATH . 'libraries/Api.php';
