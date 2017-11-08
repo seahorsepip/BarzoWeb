@@ -107,7 +107,7 @@ class Pubs extends CI_Controller {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "http://localhost:3000/api/bars",
+            CURLOPT_URL => "http://maatwerk.works/api/bars",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_CUSTOMREQUEST => "POST",
             CURLOPT_POSTFIELDS => http_build_query($this->getBody($photos)),
