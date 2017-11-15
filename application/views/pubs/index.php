@@ -15,6 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="alert alert-warning" id="no_results_error">
                 </div>
             </div>
+            <?php if(isset($pubs) && !empty($pubs)) : ?>
             <div id="hideMeBarList">
                 <div class="col-md-10 col-md-offset-1" id="bar_list">
                     <?php foreach ($pubs as $pub_key => $pub): ?>
@@ -52,12 +53,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     </div>
                                 </div>
                             </a>
-
-
                     <?php endforeach; ?>
-
                 </div>
             </div>
+            <?php else : ?>
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="alert alert-warning">
+                        Something went wrong! Please try again later.
+                    </div>
+                </div>
+            <?php endif; ?>
             <div class="l-wrapper">
                 <svg viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 

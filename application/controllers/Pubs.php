@@ -27,9 +27,11 @@ class Pubs extends CI_Controller {
         $data['menu'] = $this->menulib->getMenuAsArray();
 
         $this->load->model('Pubs_model');
-        $data['pubs'] = $this->Pubs_model->getAllPubs();
-        //$token = getToken();
-        //$header = "authorization: Bearer " . $token;
+
+        $pubs = $this->Pubs_model->getAllPubs();
+        if(isset($pubs) || !empty($pubs)){
+            $data['pubs'] = $pubs;
+        }
 
         $this->load->view('templates/header', $data);
         $this->load->view('pubs/index', $data);
