@@ -47,7 +47,10 @@ class Pubs extends CI_Controller {
 
         //Load pub by ID
         $this->load->model('Pubs_model');
-        $data['pub'] = $this->Pubs_model->getPubById($id);
+        $pub = $this->Pubs_model->getPubById($id);
+        if(isset($pub) || !empty($pub)){
+            $data['pub'] = $pub;
+        }
 
         $this->load->view('templates/header', $data);
         $this->load->view('pubs/pub', $data);
