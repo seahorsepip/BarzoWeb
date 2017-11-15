@@ -35,7 +35,7 @@ class Pubs_model extends CI_Model {
             //echo "cURL Error #:" . $err;
         } else {
             //http://docs.php.net/json_decode
-            return json_decode($response, true);
+            return json_decode($response, TRUE);
         }
     }
 

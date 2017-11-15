@@ -8,6 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="container-fluid">
 
         <div class="row mainDiv">
+            <?php if(isset($pub) && !empty($pub)) : ?>
             <div class="col-md-10 col-md-offset-1 profileBg">
                 <div class="row">
                     <div class="col-md-5 padding-10">
@@ -30,7 +31,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                         <div class="row">
                             <div class="col-md-12 padding-t-50">
-                                <?php echo $pub['location']; ?>
+                                <?php echo $pub['address'] . " " . $pub['zipcode'] . " " . $pub['city'] ?>
                             </div>
                         </div>
                     </div>
@@ -49,6 +50,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
 
             </div>
+            <?php else : ?>
+            <div class="col-md-8 col-md-offset-2">
+                <div class="alert alert-warning" id="no_results_error">
+                    Something went wrong! Please try again later.
+                </div>
+            </div>
+            <?php endif; ?>
         </div>
     </div><!-- / page-content-wrapper -->
     <!-- / content -->

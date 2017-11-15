@@ -27,9 +27,11 @@ class Pubs extends CI_Controller {
         $data['menu'] = $this->menulib->getMenuAsArray();
 
         $this->load->model('Pubs_model');
-        $data['pubs'] = $this->Pubs_model->getAllPubs();
-        //$token = getToken();
-        //$header = "authorization: Bearer " . $token;
+
+        $pubs = $this->Pubs_model->getAllPubs();
+        if(isset($pubs) || !empty($pubs)){
+            $data['pubs'] = $pubs;
+        }
 
         $this->load->view('templates/header', $data);
         $this->load->view('pubs/index', $data);
@@ -45,7 +47,10 @@ class Pubs extends CI_Controller {
 
         //Load pub by ID
         $this->load->model('Pubs_model');
-        $data['pub'] = $this->Pubs_model->getPubById($id);
+        $pub = $this->Pubs_model->getPubById($id);
+        if(isset($pub) || !empty($pub)){
+            $data['pub'] = $pub;
+        }
 
         $this->load->view('templates/header', $data);
         $this->load->view('pubs/pub', $data);
@@ -64,15 +69,13 @@ class Pubs extends CI_Controller {
             $data['controller_origin'] = "pubs/create";
 
             if ($this->input->method(TRUE) == 'POST' && isset($_REQUEST)) {
-                //TODO: Fix that images get uploaded EYO
 
-                if (empty($this->input->post('bar_name')) || empty($this->input->post('bar_description')) || empty($this->input->post('bar_address')) || empty($this->input->post('bar_zipcode')) || empty($this->input->post('bar_city'))) {
+                if (empty($this->input->post('bar_name', TRUE)) || empty($this->input->post('bar_description', TRUE)) || empty($this->input->post('bar_address', TRUE)) || empty($this->input->post('bar_zipcode', TRUE)) || empty($this->input->post('bar_city', TRUE))) {
                     $data['warning'] = 'Please fill in every field!';
                 } else {
 
                     //Image handling
-                    //TODO: Make this more readable with funcs 'n shit
-
+                    //TODO: Check if images are uploaded
                     $array = array(
                         "profile_image" => isset($_FILES['bar_profileimage']) ? $this->uploadCloudImage($_FILES['bar_profileimage'])['url'] : "",
                         "images" => array()
@@ -149,9 +152,11 @@ class Pubs extends CI_Controller {
         $body .= "&scope=" . self::SCOPE;*/
 
         $body = array(
-            'name' => $this->input->post('bar_name'),
-            'description' => $this->input->post('bar_description'),
-            'location' => $this->input->post('bar_address') . " " . $this->input->post('bar_zipcode') . " " . $this->input->post('bar_city'),
+            'name' => $this->input->post('bar_name', TRUE),
+            'description' => $this->input->post('bar_description', TRUE),
+            'city' => $this->input->post('bar_city', TRUE),
+            'zipcode' => $this->input->post('bar_zipcode', TRUE),
+            'address' => $this->input->post('bar_address', TRUE),
             'photos' => json_encode($photos, JSON_UNESCAPED_SLASHES),
             'scope' => self::SCOPE
         );
@@ -170,6 +175,7 @@ class Pubs extends CI_Controller {
     }
 
     private function uploadCloudImage($file){
+        set_time_limit(60);
         require_once APPPATH . 'libraries/Cloudinary.php';
         require_once APPPATH . 'libraries/Uploader.php';
         require_once APPPATH . 'libraries/Api.php';
