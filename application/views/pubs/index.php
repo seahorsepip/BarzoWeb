@@ -138,7 +138,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 
-    $("#filter_city").keyup(function () {
+    $("#filter_city").on('input', function () {
         $("#bar_list").fadeOut();
         $("#no_results_error").fadeOut();
         $(".l-wrapper").fadeIn();
@@ -149,7 +149,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             var value = ucFirst($("#filter_city").val());
 
             if (value.length >= minlength) {
-                if (searchRequest != null) {
+                if (searchRequest !== null) {
                     searchRequest.abort();
                 }
 
