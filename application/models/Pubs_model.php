@@ -28,14 +28,17 @@ class Pubs_model extends CI_Model {
         $response = curl_exec($curl);
         $err = curl_error($curl);
 
+        $info = curl_getinfo($curl);
         curl_close($curl);
 
-        if ($err) {
-            //TODO: Handle error
-            //echo "cURL Error #:" . $err;
-        } else {
-            //http://docs.php.net/json_decode
-            return json_decode($response, TRUE);
+        if ($info['http_code'] == 200){
+            if ($err) {
+                return FALSE;
+            } else {
+                return json_decode($response, TRUE);
+            }
+        }else{
+            return FALSE;
         }
     }
 
@@ -60,13 +63,18 @@ class Pubs_model extends CI_Model {
         $response = curl_exec($curl);
         $err = curl_error($curl);
 
+        //Check if request was successful
+        $info = curl_getinfo($curl);
         curl_close($curl);
 
-        if ($err) {
-            //TODO: Handle error
-            //echo "cURL Error #:" . $err;
-        } else {
-            return json_decode($response, true);
+        if ($info['http_code'] == 200){
+            if ($err) {
+                return FALSE;
+            } else {
+                return json_decode($response, true);
+            }
+        }else{
+            return FALSE;
         }
     }
 }

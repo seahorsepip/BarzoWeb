@@ -29,8 +29,10 @@ class Pubs extends CI_Controller {
         $this->load->model('Pubs_model');
 
         $pubs = $this->Pubs_model->getAllPubs();
-        if(isset($pubs) || !empty($pubs)){
-            $data['pubs'] = $pubs;
+        if ($pubs != false) {
+            if (isset($pubs) || !empty($pubs)) {
+                $data['pubs'] = $pubs;
+            }
         }
 
         $this->load->view('templates/header', $data);
@@ -48,8 +50,10 @@ class Pubs extends CI_Controller {
         //Load pub by ID
         $this->load->model('Pubs_model');
         $pub = $this->Pubs_model->getPubById($id);
-        if(isset($pub) || !empty($pub)){
-            $data['pub'] = $pub;
+        if ($pub != false) {
+            if (isset($pub) || !empty($pub)) {
+                $data['pub'] = $pub;
+            }
         }
 
         $this->load->view('templates/header', $data);
