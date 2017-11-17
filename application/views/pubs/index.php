@@ -151,7 +151,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         delay(function(){
 
 
-            var value = ucFirst($("#filter_city").val());
+            //var value = ucFirst($("#filter_city").val());
+            var value = $("#filter_city").val();
 
             if (value.length >= minlength) {
                 if (searchRequest !== null) {
