@@ -31,7 +31,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                         <div class="row">
                             <div class="col-md-12 padding-t-50">
-                                <?php echo $pub['address'] . " " . $pub['zipcode'] . " " . $pub['city'] ?>
+                                <?php echo $pub['address'] . " " . $pub['zipcode'] . " " . ucfirst($pub['city']) ?>
                             </div>
                         </div>
                     </div>

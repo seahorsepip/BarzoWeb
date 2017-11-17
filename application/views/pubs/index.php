@@ -42,7 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             </div>
                                             <!-- Address data -->
                                             <div class="col-md-12 padding-t-50">
-                                                <h6><?php echo $pub['address'] . " " . $pub['zipcode'] . " " . $pub['city'] ?></h6>
+                                                <h6><?php echo $pub['address'] . " " . $pub['zipcode'] . " " . ucfirst($pub['city']) ?></h6>
 
                                             </div>
                                         </div>
@@ -181,7 +181,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             $("#bar_list").empty();
 
                             $.each(response, function(index, item){
-                                $('#bar_list').append('<a href="pubs/' + item['id'] + '"><div class="row pubRow"><div class="col-md-2 padding-10"><img src="' + item['photos']['profile_image'] + '"/></div><div class="col-md-8 padding-0"><div class="row"><div class="col-md-12 padding-t-10"><h2>' + item['name'] + '</h2></div><div class="col-md-12">' + item['description'] + '</div><div class="col-md-12 padding-t-50"><h6>' + item['address'] + ' ' + item['zipcode'] + ' ' + item['city'] + '</h6></div></div></div><div class="col-md-2"><span class="glyphicon glyphicon-chevron-right pubRowArrow"></span></div></div></a>');
+                                $('#bar_list').append('<a href="pubs/' + item['id'] + '"><div class="row pubRow"><div class="col-md-2 padding-10"><img src="' + item['photos']['profile_image'] + '"/></div><div class="col-md-8 padding-0"><div class="row"><div class="col-md-12 padding-t-10"><h2>' + item['name'] + '</h2></div><div class="col-md-12">' + item['description'] + '</div><div class="col-md-12 padding-t-50"><h6>' + item['address'] + ' ' + item['zipcode'] + ' ' + ucFirst(item['city']) + '</h6></div></div></div><div class="col-md-2"><span class="glyphicon glyphicon-chevron-right pubRowArrow"></span></div></div></a>');
                             });
 
                             $(".l-wrapper").fadeOut(100);
