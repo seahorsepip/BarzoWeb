@@ -20,7 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     echo "</div>";
                 }
                 ?>
-                <?php echo form_open_multipart('pubs/create'); ?>
+                <?php echo form_open_multipart('bars/create'); ?>
                     <div class="form-group">
                         <label for="bar_name">Bar Name:</label>
                         <input class="form-control" id="bar_name" type="text" name="bar_name" value="">

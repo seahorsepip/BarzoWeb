@@ -103,7 +103,7 @@ class Login extends CI_Controller
             $this->session->set_userdata($json);
             $this->session->set_userdata('refresh_before', time() + $json['expires_in'] - 2000);
             $this->session->unset_userdata('expires_in');
-            redirect(base_url() . 'pubs');
+            redirect(base_url() . 'Bars');
         }
     }
 }

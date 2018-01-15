@@ -1,12 +1,12 @@
 <?php
 
-class Pubs_model extends CI_Model {
+class Bars_model extends CI_Model {
 
     public function __construct() {
         parent::__construct();
     }
 
-    public function getAllPubs() {
+    public function getAllBars() {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -39,7 +39,7 @@ class Pubs_model extends CI_Model {
         }
     }
 
-    public function getPubById($id){
+    public function getBarById($id){
         $curl = curl_init();
 
         curl_setopt_array($curl, array(

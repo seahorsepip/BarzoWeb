@@ -1,7 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+error_reporting(E_ALL);
 
-class Pubs extends CI_Controller {
+class Bars extends CI_Controller {
 
     const CLIENT_ID = 'Bar';
     const CLIENT_SECRET = '8e6ebc1f-26db-4c0d-b773-35155cd3fc5f';
@@ -15,50 +16,50 @@ class Pubs extends CI_Controller {
     }
 
     public function index($page = 'index') {
-        if (!file_exists(APPPATH . 'views/pubs/' . $page . '.php')) {
+        if (!file_exists(APPPATH . 'views/bars/' . $page . '.php')) {
             // Whoops, we don't have a page for that!
             show_404();
         }
 
-        $data['controller_origin'] = "pubs";
+        $data['controller_origin'] = "bars";
 
         //Initialize & pass custom menu class
         $this->load->library('MenuLib');
         $data['menu'] = $this->menulib->getMenuAsArray();
 
-        $this->load->model('Pubs_model');
+        $this->load->model('Bars_model');
 
-        $pubs = $this->Pubs_model->getAllPubs();
-        if(isset($pubs) || !empty($pubs)){
-            $data['pubs'] = $pubs;
+        $bars = $this->Bars_model->getAllBars();
+        if(isset($bars) || !empty($bars)){
+            $data['bars'] = $bars;
         }
 
         $this->load->view('templates/header', $data);
-        $this->load->view('pubs/index', $data);
+        $this->load->view('bars/index', $data);
         $this->load->view('templates/footer');
     }
 
     public function pub($id){
-        $data['controller_origin'] = "pubs";
+        $data['controller_origin'] = "bars";
 
         //Initialize & pass custom menu class
         $this->load->library('MenuLib');
         $data['menu'] = $this->menulib->getMenuAsArray();
 
         //Load pub by ID
-        $this->load->model('Pubs_model');
-        $pub = $this->Pubs_model->getPubById($id);
-        if(isset($pub) || !empty($pub)){
-            $data['pub'] = $pub;
+        $this->load->model('Bars_model');
+        $bar = $this->Bars_model->getBarById($id);
+        if(isset($bar) || !empty($bar)){
+            $data['bar'] = $bar;
         }
 
         $this->load->view('templates/header', $data);
-        $this->load->view('pubs/pub', $data);
+        $this->load->view('bars/bar', $data);
         $this->load->view('templates/footer');
     }
 
     public function create($page = 'create'){
-        if (!file_exists(APPPATH . 'views/pubs/' . $page . '.php')) {
+        if (!file_exists(APPPATH . 'views/bars/' . $page . '.php')) {
             show_404();
         }
 
@@ -66,7 +67,7 @@ class Pubs extends CI_Controller {
             //Logged in, show create view
             $this->load->library('MenuLib');
             $data['menu'] = $this->menulib->getMenuAsArray();
-            $data['controller_origin'] = "pubs/create";
+            $data['controller_origin'] = "bars/create";
 
             if ($this->input->method(TRUE) == 'POST' && isset($_REQUEST)) {
 
@@ -92,13 +93,13 @@ class Pubs extends CI_Controller {
 
                     //echo json_encode($array, JSON_UNESCAPED_SLASHES);
                     $data['error'] = $this->handleCreate($array);
-                    redirect(base_url() . 'pubs');
+                    redirect(base_url() . 'bars');
 
                 }
             }
 
             $this->load->view('templates/header', $data);
-            $this->load->view('pubs/create', $data);
+            $this->load->view('bars/create', $data);
             $this->load->view('templates/footer');
         }else{
             //Not logged in, redirect to login page
@@ -170,7 +171,7 @@ class Pubs extends CI_Controller {
             if(isset($json['error'])) {
                 return $json;
             }
-            redirect(base_url() . 'pubs');
+            redirect(base_url() . 'Bars');
         }
     }
 

@@ -55,8 +55,8 @@ $route['default_controller'] = 'home/index';
 //Temp routes
 $route['home/(:any)'] = 'home/index';
 
-$route['pubs/create'] = 'pubs/create';
-$route['pubs/(:any)'] = 'pubs/pub/$1';
+$route['bars/create'] = 'bars/create';
+$route['bars/(:any)'] = 'bars/pub/$1';
 
 $route['quiz/(:any)'] = 'quiz/index';
 
