@@ -96,17 +96,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 fetch('http://maatwerk.works/api/bars')
                     .then(response => response.json())
                     .then(bars => {
-                        //Code from hell for testing purposes
-                        let a = bars[0];
-                        let b = bars[1];
-                        bars.push(a);
-                        bars.push(a);
-                        bars.push(a);
-                        bars.push(a);
-                        bars.push(b);
-                        bars.push(b);
-                        bars.push(b);
-                        bars.push(b);
                         return bars;
                     })
                     .then(bars => bars.forEach(bar => {

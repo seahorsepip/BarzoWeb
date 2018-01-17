@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <img src="<?php echo $image; ?>" class="rounded">
             <?php endforeach; ?>
         <?php endif; ?>
-        <h4>Upcoming music</h4>
+        <h4>Most voted music</h4>
         <table class="table table-striped table-bordered votes-wrapper">
             <thead class="thead-dark">
             <tr>
