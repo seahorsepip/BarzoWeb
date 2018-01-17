@@ -33,7 +33,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>-->
     <div class="row">
         <div class="col-md-4 col-lg-3 col-xl-2 filter-wrapper">
-            <img src="https://i.imgur.com/Nop5Xjo.png" class="logo">
+            <h1 class="logo">BARZO</h1>
             <form class="form-search">
                 <input class="form-control" type="text" placeholder="Search">
                 <button class="btn btn-secondary" type="submit">Search</button>
@@ -95,20 +95,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 let wrapper = document.querySelectorAll('.card-columns')[0];
                 fetch('http://maatwerk.works/api/bars')
                     .then(response => response.json())
-                    .then(bars => {
-                        //Code from hell for testing purposes
-                        let a = bars[0];
-                        let b = bars[1];
-                        bars.push(a);
-                        bars.push(a);
-                        bars.push(a);
-                        bars.push(a);
-                        bars.push(b);
-                        bars.push(b);
-                        bars.push(b);
-                        bars.push(b);
-                        return bars;
-                    })
                     .then(bars => bars.forEach(bar => {
                         let el = document.createElement("div");
                         el.innerHTML = `<div class="card">
