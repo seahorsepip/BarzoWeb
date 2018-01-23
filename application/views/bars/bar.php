@@ -72,7 +72,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <script>
             let eventsWrapper = document.querySelectorAll('.events-wrapper')[0];
             let eventsAlert = document.querySelectorAll('.events-alert')[0];
-            fetch('http://maatwerk.works/api/events')
+            fetch('http://maatwerk.works/api/events?barId=<?php echo $bar['id'] ?>' )
                 .then(response => response.json())
                 .then(events => {
                     if (events.length) {
